@@ -1,5 +1,5 @@
 module Spree
-  class Gateway::BalancedGateway < Gateway
+  class Gateway::BalancedGateway < PaymentMethod::CreditCard
     preference :login, :string
     preference :on_behalf_of_uri, :string
 
@@ -48,7 +48,7 @@ module Spree
       provider.purchase(money, creditcard, gateway_options)
     end
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::BalancedGateway
     end
 

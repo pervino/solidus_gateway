@@ -1,5 +1,5 @@
 module Spree
-  class Gateway::Worldpay < Gateway
+  class Gateway::Worldpay < PaymentMethod::CreditCard
     preference :login, :string
     preference :password, :string
     preference :currency, :string, :default => 'GBP'
@@ -12,7 +12,7 @@ module Spree
     preference :maestro_login, :string
     preference :visa_login, :string
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::WorldpayGateway
     end
 
@@ -62,7 +62,7 @@ module Spree
       gateway_options[:currency] = self.preferred_currency
       gateway_options[:inst_id] = self.preferred_installation_id
       ActiveMerchant::Billing::Base.gateway_mode = gateway_options[:server].to_sym
-      @provider = provider_class.new(gateway_options)
+      @provider = gateway_class.new(gateway_options)
     end
 
     def login_for_card(card)

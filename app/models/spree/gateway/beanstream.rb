@@ -1,11 +1,11 @@
 module Spree
-  class Gateway::Beanstream < Gateway
+  class Gateway::Beanstream < PaymentMethod::CreditCard
     preference :login, :string
     preference :user, :string
     preference :password, :string
     preference :secure_profile_api_key, :string
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::BeanstreamGateway
     end
 

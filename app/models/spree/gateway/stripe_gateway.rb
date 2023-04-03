@@ -1,5 +1,5 @@
 module Spree
-  class Gateway::StripeGateway < Gateway
+  class Gateway::StripeGateway < PaymentMethod::CreditCard
     preference :secret_key, :string
     preference :publishable_key, :string
 
@@ -19,7 +19,7 @@ module Spree
       end
     end
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::StripeGateway
     end
 
