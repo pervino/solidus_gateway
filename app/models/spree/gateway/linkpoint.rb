@@ -3,7 +3,7 @@ module Spree
     preference :login, :string
     preference :pem, :text
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::LinkpointGateway
     end
 

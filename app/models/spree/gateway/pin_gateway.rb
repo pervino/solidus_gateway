@@ -3,7 +3,7 @@ module Spree
     preference :api_key, :string
     preference :currency, :string, :default => 'AUD'
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::PinGateway
     end
 

@@ -31,7 +31,7 @@ module Spree
       provider_instance
     end
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::BraintreeBlueGateway
     end
 

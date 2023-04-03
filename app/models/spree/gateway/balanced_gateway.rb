@@ -48,7 +48,7 @@ module Spree
       provider.purchase(money, creditcard, gateway_options)
     end
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::BalancedGateway
     end
 

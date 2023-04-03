@@ -5,7 +5,7 @@ module Spree
     preference :password, :string
     preference :secure_profile_api_key, :string
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::BeanstreamGateway
     end
 

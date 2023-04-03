@@ -3,7 +3,7 @@ module Spree
     preference :login, :string
 
 
-    def provider_class
+    def gateway_class
       ActiveMerchant::Billing::BanwireGateway
     end
 
