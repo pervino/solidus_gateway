@@ -1,20 +1,20 @@
 module Spree
-  class Gateway::PinGateway < Gateway
+  class Gateway::PinGateway < PaymentMethod::CreditCard
     preference :api_key, :string
     preference :currency, :string, :default => 'AUD'
 
     def provider_class
       ActiveMerchant::Billing::PinGateway
     end
-    
+
     def purchase(money, creditcard, options = {})
       super(money, creditcard.try(:gateway_customer_profile_id) || creditcard.try(:gateway_payment_profile_id) || creditcard, options)
     end
-    
+
     def create_profile(payment)
       if payment.source.gateway_customer_profile_id.nil?
         response = provider.store(payment.source, options_for_payment(payment))
-        
+
         if response.success?
           payment.source.update_attributes!(:gateway_customer_profile_id => response.authorization)
 
@@ -30,13 +30,13 @@ module Spree
     def auto_capture?
       true
     end
-    
+
     def payment_profiles_supported?
       true
     end
-    
+
     private
-    
+
     def options_for_payment(p)
       o = Hash.new
       o[:email] = p.order.email
@@ -55,6 +55,6 @@ module Spree
 
       return o
     end
-    
+
   end
 end
