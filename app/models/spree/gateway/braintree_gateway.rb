@@ -161,8 +161,8 @@ module Spree
         if p.order.bill_address
           bill_addr = p.order.bill_address
 
-          o[:first_name] = bill_addr.firstname
-          o[:last_name] = bill_addr.lastname
+          o[:first_name] = Spree::Address::Name.new(bill_addr).first_name
+          o[:last_name] = Spree::Address::Name.new(bill_addr).last_name
 
           o[:billing_address] = {
             address1: bill_addr.address1,

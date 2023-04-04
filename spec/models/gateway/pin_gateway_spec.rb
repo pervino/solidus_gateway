@@ -11,8 +11,7 @@ describe Spree::Gateway::PinGateway do
     country = create(:country, name: 'Australia', iso_name: 'Australia', iso3: 'AUS', iso: 'AU', numcode: 61)
     state   = create(:state, name: 'Victoria', abbr: 'VIC', country: country)
     address = create(:address,
-      firstname: 'Ronald C',
-      lastname:  'Robot',
+      name: 'Ronald C Robot',
       address1:  '1234 My Street',
       address2:  'Apt 1',
       city:      'Melbourne',

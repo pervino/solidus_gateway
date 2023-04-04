@@ -18,8 +18,7 @@ describe Spree::Gateway::BraintreeGateway do
       country = create(:country, name: 'United States', iso_name: 'UNITED STATES', iso3: 'USA', iso: 'US', numcode: 840)
       state   = create(:state, name: 'Maryland', abbr: 'MD', country: country)
       address = create(:address,
-        firstname: 'John',
-        lastname:  'Doe',
+        name: 'John Doe',
         address1:  '1234 My Street',
         address2:  'Apt 1',
         city:      'Washington DC',
@@ -51,8 +50,7 @@ describe Spree::Gateway::BraintreeGateway do
       country = create(:country, name: 'United States', iso_name: 'UNITED STATES', iso3: 'USA', iso: 'US', numcode: 840)
       state   = create(:state, name: 'Maryland', abbr: 'MD', country: country)
       address = create(:address,
-        firstname: 'John',
-        lastname:  'Doe',
+        name: 'John Doe',
         address1:  '1234 My Street',
         address2:  'Apt 1',
         city:      'Washington DC',
@@ -98,8 +96,7 @@ describe Spree::Gateway::BraintreeGateway do
       country = create(:country, name: 'United States', iso_name: 'UNITED STATES', iso3: 'USA', iso: 'US', numcode: 840)
       state   = create(:state, name: 'Maryland', abbr: 'MD', country: country)
       address = create(:address,
-        firstname: 'John',
-        lastname:  'Doe',
+        name: 'John Doe',
         address1:  '1234 My Street',
         address2:  'Apt 1',
         city:      'Washington DC',

@@ -176,8 +176,8 @@ module Spree
       def generate_address_hash(address)
         return {} if address.nil?
         {
-          first_name: address.firstname,
-          last_name: address.lastname,
+          first_name: Spree::Address::Name.new(address).first_name,
+          last_name: Spree::Address::Name.new(address).last_name,
           address1: address.address1,
           address2: address.address2,
           city: address.city,
