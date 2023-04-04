@@ -49,8 +49,8 @@ module Spree
 
       def verify_creditcard_name!(creditcard)
         bill_address = creditcard.payments.first.order.bill_address
-        creditcard.first_name = bill_address.firstname unless creditcard.first_name?
-        creditcard.last_name = bill_address.lastname   unless creditcard.last_name?
+        creditcard.first_name = Spree::Address::Name.new(bill_address).first_name unless creditcard.first_name?
+        creditcard.last_name = Spree::Address::Name.new(bill_address).last_name unless creditcard.last_name?
       end
 
       def options_for_create_customer_profile(creditcard, gateway_options)
@@ -58,7 +58,7 @@ module Spree
         address = order.bill_address
         { :email=>order.email,
           :billing_address=>
-          { :name=>address.full_name,
+          { :name=>address.name,
             :phone=>address.phone,
             :address1=>address.address1,
             :address2=>address.address2,
