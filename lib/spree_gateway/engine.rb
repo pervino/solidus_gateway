@@ -3,6 +3,7 @@ module SpreeGateway
     engine_name 'solidus_gateway'
 
     initializer "spree.gateway.payment_methods", :after => "spree.register.payment_methods" do |app|
+      app.reloader.to_prepare do
         app.config.spree.payment_methods << Spree::Gateway::AuthorizeNetCim
         app.config.spree.payment_methods << Spree::Gateway::AuthorizeNet
         app.config.spree.payment_methods << Spree::Gateway::CardSave
@@ -23,10 +24,11 @@ module SpreeGateway
         app.config.spree.payment_methods << Spree::Gateway::PinGateway
         app.config.spree.payment_methods << Spree::Gateway::Paymill
         app.config.spree.payment_methods << Spree::Gateway::PayflowPro
-        app.config.spree.payment_methods << Spree::Gateway::SecurePayAU
+        app.config.spree.payment_methods << Spree::Gateway::SecurePayAu
         app.config.spree.payment_methods << Spree::Gateway::Maxipago
         app.config.spree.payment_methods << Spree::Gateway::Migs
         app.config.spree.payment_methods << Spree::Gateway::SpreedlyCoreGateway
+      end
     end
 
     # The application_id is a class attribute on all gateways and is used to
